@@ -1,17 +1,11 @@
 List productName = [
-  "iPhone",
-  "Asus Vivobook",
-  "Macbook",
+'Google'
 ];
 
-List categoryList = [
-  'iOS Mobile',
-  'Window Laptop',
-  'iOS Laptop',
+List productQty = [
+1
 ];
 
 List productAmount = [
-  100000,
-  60000,
-  160000,
+10000000000
 ];

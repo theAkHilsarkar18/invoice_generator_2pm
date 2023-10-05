@@ -11,6 +11,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    setState(() {
+
+    });
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -19,78 +22,36 @@ class _HomeScreenState extends State<HomeScreen> {
           title:
               const Text("Home Screen", style: TextStyle(color: Colors.white)),
         ),
-        body: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          itemCount: productName.length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: Color(0xff219C90),
-                ),
-              ),
-              child: ListTile(
-                leading: Icon(Icons.production_quantity_limits),
-                title: Text(
-                  "${productName[index]}",
-                  style: TextStyle(color: Colors.black),
-                ),
-                subtitle: Text(
-                  "${categoryList[index]} | ${productAmount[index]} rs.",
-                  style: TextStyle(color: Colors.black),
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          setState(() {
-                            productName.removeAt(index);
-                            productAmount.removeAt(index);
-                            categoryList.removeAt(index);
-                          });
-                        },
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                          size: 22,
-                        )),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    InkWell(
-                        onTap: () {
-                          setState(() {
-                            productName[index] = "Google";
-                            productAmount[index] = 100000000000;
-                            categoryList[index] = "Company";
-                          });
-                        },
-                        child: Icon(
-                          Icons.edit,
-                          color: Color(0xff219C90),
-                          size: 22,
-                        )),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        body: ListView.builder(itemBuilder: (context, index) => productBox(index),itemCount: productName.length,),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xff219C90),
+          backgroundColor: const Color(0xff219C90),
           onPressed: () {
-            setState(() {
-              productName.add("Watch");
-              productAmount.add(1200);
-              categoryList.add("Smart Watch");
-            });
+            Navigator.of(context).pushNamed('add');
           },
-          child: const Icon(Icons.add, color: Colors.white),
+          child: Icon(Icons.add,color: Colors.white),
         ),
       ),
     );
   }
+}
+
+
+Widget productBox(int index)
+{
+  return Container(
+    alignment: Alignment.center,
+    margin: EdgeInsets.all(15),
+    height: 80,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: const Color(0xff219C90),width: 1.5),
+    ),
+    child: ListTile(
+
+      leading: Text('${productName[index]}',style: TextStyle(fontSize: 18),),
+      title: Text('${productQty[index]} Qty',style: TextStyle(fontSize: 18),),
+      trailing: Text('${productAmount[index]}/-',style: TextStyle(fontSize: 18),),
+    ),
+  );
 }

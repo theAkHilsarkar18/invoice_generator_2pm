@@ -7,7 +7,8 @@ void main()
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData.dark(useMaterial3: true),
+      themeMode: ThemeMode.dark,
       routes: {
         '/' : (context) =>  HomeScreen(),
         'add' : (context) =>  AddScreen(),
