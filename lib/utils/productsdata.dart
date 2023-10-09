@@ -1,11 +1,13 @@
 List productName = [
-'Google'
+
 ];
 
 List productQty = [
-1
+
 ];
 
-List productAmount = [
-10000000000
+List<int> productAmount = [
+
 ];
+
+int total = 0;

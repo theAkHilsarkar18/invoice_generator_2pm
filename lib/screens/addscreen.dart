@@ -25,7 +25,7 @@ class _AddScreenState extends State<AddScreen> {
           backgroundColor: const Color(0xff219C90),
           leading: InkWell(
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacementNamed('/');
               },
               child: Icon(Icons.arrow_back_outlined, color: Colors.white)),
           title: Text("Add Product", style: TextStyle(color: Colors.white)),
@@ -47,12 +47,11 @@ class _AddScreenState extends State<AddScreen> {
           onPressed: () {
 
             setState(() {
-
+              int finalprice = int.parse(txtProductQty.text) * int.parse(txtProductPrice.text);
               productName.add(txtProductName.text);
-              productAmount.add(txtProductPrice.text);
+              productAmount.add(finalprice);
               productQty.add(txtProductQty.text);
-              Navigator.of(context).pop();
-              log(productAmount[1]);
+              Navigator.of(context).pushReplacementNamed('/');
             });
 
           },
